@@ -23,10 +23,11 @@ public class MixinEnchantmentHelper {
                     value = "INVOKE",
                     target = "Lnet/minecraft/nbt/NBTTagCompound;getShort(Ljava/lang/String;)S",
                     ordinal = 1,
-                    shift = At.Shift.AFTER),
+                    shift = At.Shift.BY,
+                    by = 2),
             cancellable = true)
     private static void battlegear2$getEnchantmentLevel(int p_77506_0_, ItemStack p_77506_1_,
-            CallbackInfoReturnable<Integer> cir, @Local short short1, @Local short short2) {
+            CallbackInfoReturnable<Integer> cir, @Local(ordinal = 0) short short1, @Local(ordinal = 1) short short2) {
         if (p_77506_0_ == Enchantment.looting.effectId && BaseEnchantment.bowLoot.isPresent()
                 && short1 == BaseEnchantment.bowLoot.get().effectId) {
             cir.setReturnValue((int) short2);
